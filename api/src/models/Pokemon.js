@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    weigth: {
+    weight: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
     createInDb: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: true,
     },
     description: {
       type: DataTypes.TEXT,
