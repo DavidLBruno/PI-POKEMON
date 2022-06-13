@@ -105,13 +105,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 __Pagina inicial__: deben armar una landing page con
 
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- ✔️[ ] Alguna imagen de fondo representativa al proyecto
+- ✔️[ ] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
 
-- [ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el nombre completo)
-- [ ] Área donde se verá el listado de pokemons. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /pokemons` y deberá mostrar su:
+- ✔️[ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el nombre completo)
+- ✔️[ ] Área donde se verá el listado de pokemons. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /pokemons` y deberá mostrar su:
   - Imagen
   - Nombre
   - Tipos (Electrico, Fuego, Agua, etc)
@@ -140,7 +140,7 @@ __Ruta de creación__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Pokemon con las siguientes propiedades:
+- ✔️[ ] Pokemon con las siguientes propiedades:
   - ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
   - Nombre *
   - Vida
@@ -149,7 +149,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Velocidad
   - Altura
   - Peso
-- [ ] Tipo con las siguientes propiedades:
+- ✔️[ ] Tipo con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -163,20 +163,20 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] __GET /pokemons__:
+- ✔️[ ] __GET /pokemons__:
   - Obtener un listado de los pokemons desde pokeapi.
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /pokemons/{idPokemon}__:
+- ✔️[ ] __GET /pokemons/{idPokemon}__:
   - Obtener el detalle de un pokemon en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de pokemon
   - Tener en cuenta que tiene que funcionar tanto para un id de un pokemon existente en pokeapi o uno creado por ustedes
-- [ ] __GET /pokemons?name="..."__:
+- ✔️[ ] __GET /pokemons?name="..."__:
   - Obtener el pokemon que coincida exactamente con el nombre pasado como query parameter (Puede ser de pokeapi o creado por nosotros)
   - Si no existe ningún pokemon mostrar un mensaje adecuado
-- [ ] __POST /pokemons__:
+- ✔️[ ] __POST /pokemons__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de pokemons por body
   - Crea un pokemon en la base de datos relacionado con sus tipos.
-- [ ] __GET /types__:
+- ✔️[ ] __GET /types__:
   - Obtener todos los tipos de pokemons posibles
   - En una primera instancia deberán traerlos desde pokeapi y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 
