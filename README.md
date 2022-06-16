@@ -116,17 +116,17 @@ __Ruta principal__: debe contener
   - Nombre
   - Tipos (Electrico, Fuego, Agua, etc)
 - [ ] Botones/Opciones para filtrar por tipo de pokemon y por pokemon existente o creado por nosotros
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemons por orden alfabético y por ataque
-- [ ] Paginado para ir buscando y mostrando los siguientes pokemons, 12 pokemons por pagina.
+- ✔️[ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemons por orden alfabético y por ataque
+- ✔️[ ] Paginado para ir buscando y mostrando los siguientes pokemons, 12 pokemons por pagina.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los pokemons traidos desde la API como así también las de la base de datos. Por otro lado, si revisan el endpoint que trae todos los pokemons verán que no muestra la información del pokemon sino una URL para hacer un subrequest y obtener los datos de allí. Tendrán que por cada pokemon que van a mostrar hacer otro request a esa URL para obtener su imagen y tipos. Debido a que esto puede hacer que la búsqueda sea muy lenta limitar el resultado total a 40 pokemons totales.
 
 __Ruta de detalle de Pokemon__: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
-- [ ] Número de Pokemon (id)
-- [ ] Estadísticas (vida, ataque, defensa, velocidad)
-- [ ] Altura y peso
+- ✔️[ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
+- ✔️[ ] Número de Pokemon (id)
+- ✔️[ ] Estadísticas (vida, ataque, defensa, velocidad)
+- ✔️[ ] Altura y peso
 
 __Ruta de creación__: debe contener
 

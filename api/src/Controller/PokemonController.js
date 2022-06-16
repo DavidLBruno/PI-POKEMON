@@ -17,36 +17,34 @@ const pokeApi = async (name) => {
                     height: pokeByName.data.height,
                     weight: pokeByName.data.weight,
                     image: pokeByName.data.sprites.versions['generation-v']['black-white'].front_default,
-                    Type: pokeByName.data.types.map((e) => { return { name: e.type.name } }),
+                    types: pokeByName.data.types.map((e) => { return { name: e.type.name } }),
                 };
             }else{
                 return [];
             }
         }else{
             const pokemonsApi = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
-            const urlPokemons = await pokemonsApi.data.results.map( (e) => e.url);
-            const allPokemons = [];
-            for (let i = 0; i < urlPokemons.length; i++) {
-                const getInfoPokemons = await axios.get(`${urlPokemons[i]}`);
-                allPokemons.push(getInfoPokemons.data)
-            };
-            return allPokemons.map(e => {
+            const subRequest = pokemonsApi.data.results.map((e) => axios.get(e.url));
+            let promiseRequest = await Promise.all(subRequest);
+
+            promiseRequest = await promiseRequest.map((e) => {
                 return {
-                    id: e.id,
-                    name: e.name,
-                    hp: e.stats[0].base_stat,
-                    attack: e.stats[1].base_stat,
-                    defense: e.stats[2].base_stat,
-                    speed: e.stats[5].base_stat,
-                    height: e.height,
-                    weight: e.weight,
-                    image: e.sprites.versions['generation-v']['black-white'].front_default,
-                    Type: e.types.map((e) => { return { name: e.type.name } }),
-                }
+                    id: e.data.id,
+                    name: e.data.name,
+                    hp: e.data.stats[0].base_stat,
+                    attack: e.data.stats[1].base_stat,
+                    defense: e.data.stats[2].base_stat,
+                    speed: e.data.stats[5].base_stat,
+                    height: e.data.height,
+                    weight: e.data.weight,
+                    image: e.data.sprites.versions['generation-v']['black-white'].front_default,
+                    types: e.data.types.map((e) => { return { name: e.type.name } }),
+                };
             });
+            return promiseRequest
         };
-    }catch{
-        console.log('Pokemon Not Found');
+    }catch(error){
+        console.log(error);
     };
 };
 
@@ -66,8 +64,8 @@ const pokeDb = async (name) => {
         }else{
             return pokemon;
         };
-    }catch(error){
-        console.log(error);
+    }catch{
+        console.log('Pokemon not found');
     };
 };
 
@@ -105,7 +103,7 @@ const getPokemonById = async (req, res, next) => {
                 height: pokemonApi.data.height,
                 weight: pokemonApi.data.weight,
                 image: pokemonApi.data.sprites.versions['generation-v']['black-white'].front_default,
-                Type: pokemonApi.data.types.map((e) => { return { name: e.type.name } }),
+                types: pokemonApi.data.types.map((e) => { return { name: e.type.name } }),
             }];
             res.send(pokemonByIdApi);
         }else{
@@ -121,7 +119,6 @@ const getPokemonById = async (req, res, next) => {
             let pokemonIdDb = pokemon.filter(e => e.id === id);
             res.send(pokemonIdDb);
         };
-        res.send(pokesearch);
     }catch(error){
         console.log(error);
     };
@@ -130,6 +127,7 @@ const getPokemonById = async (req, res, next) => {
 const createPokemon = async (req, res) => {
     try{
         const { name, hp, attack, defense, speed, height, weight, image, type } = req.body;
+        console.log(type)
         const findPokemon = await Pokemon.findOne({ where: { name: name.toLowerCase() }, });
         if(findPokemon){
                 res.send('Pokemon already exists');
@@ -146,7 +144,7 @@ const createPokemon = async (req, res) => {
             });
             let pokemonType = await Type.findAll({
                 where: {
-                    name: type,
+                    name: type
                 },
             });
             await newPokemon.setTypes(pokemonType);

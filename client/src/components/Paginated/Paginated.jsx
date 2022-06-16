@@ -11,7 +11,7 @@ export default function Paginated({ pokemonPerPage, allPokemons, paginated }){
             {
                 pageNumbers &&
                 pageNumbers.map(e => (
-                    <div>
+                    <div key={e}>
                         <button onClick={() => paginated(e)}>{e}</button>
                     </div>
                 ))

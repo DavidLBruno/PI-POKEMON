@@ -23,9 +23,14 @@ function rootReducer(state = initialState, action){
                 ...state,
                 types: action.payload,
             }
+        case 'GET_DETAIL':
+            return {
+                ...state,
+                pokemonDetail: action.payload,
+            }
         case 'ORDER_POKEMONS':
             if(action.payload === 'asc'){
-            state.pokemonFiltered.sort(function(a, b){
+            state.pokemon.sort(function(a, b){
                 if(a.name > b.name){
                     return 1;
                 }
@@ -35,7 +40,7 @@ function rootReducer(state = initialState, action){
                 return 0;
             })
         }else if(action.payload === 'des'){
-            state.pokemonFiltered.sort(function(a, b){
+            state.pokemon.sort(function(a, b){
                 if(a.name > b.name){
                     return -1;
                 }
@@ -44,7 +49,7 @@ function rootReducer(state = initialState, action){
                 }
             })
         }else if(action.payload === 'weakness'){
-            state.pokemonFiltered.sort(function(a, b){
+            state.pokemon.sort(function(a, b){
                 if(a.attack  > b.attack ){
                     return 1;
                 }
@@ -54,7 +59,7 @@ function rootReducer(state = initialState, action){
                 return 0;
             })
         }else if(action.payload === 'stronger'){
-            state.pokemonFiltered.sort(function(a, b){
+            state.pokemon.sort(function(a, b){
                 if(a.attack  > b.attack ){
                     return -1;
                 }
@@ -62,12 +67,28 @@ function rootReducer(state = initialState, action){
                     return 1;
                 }
             })
-        }else{
+        }
             return{
                 ...state,
-                pokemonFiltered: state.pokemonFiltered
+                pokemon: state.pokemon,
             }
-        }
+        case 'FILTER_BY_TYPE':
+            let allPokemonsType = state.pokemonFiltered;
+            let typeFiltered = action.payload === 'all' ? allPokemonsType : allPokemonsType.filter((e) => {
+                return e.types.some((d) => d.name === action.payload)
+            });
+            return{
+                ...state,
+                pokemon: typeFiltered,
+            }
+        case 'FILTER_BY_STATE':
+            let allPokemonsState = state.pokemonFiltered;
+            let stateFiltered = action.payload !== 'true' ? allPokemonsState : allPokemonsState.filter(e => { return e.createInDb});;
+            return {
+                ...state,
+                pokemon: stateFiltered
+            }
+
         default:
             return state;
     };

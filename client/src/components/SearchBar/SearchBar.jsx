@@ -15,17 +15,19 @@ export default function SearchBar(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(getNamePokemon(name));
+        if(name){
+            dispatch(getNamePokemon(name));
+        }else{
+            alert('Enter a valid name');
+        };
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => {hanldeInputChange(e)}}
-            />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
-        </div>
+<div className={styles.box}>
+	<div class={styles.inputContainer}>
+		<input type="text" required=""/>
+		<label>Full Name</label>
+	</div>
+</div>
     )
 };
