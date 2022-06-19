@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { validate } from "./validator.js";
 import { createPokemon } from "../../redux/action";
+import styles from "./PokemonCreate.module.css"
 
 export default function PokemonCreate(){
     const dispatch = useDispatch();
     const typesData = useSelector((state) => state.types);
 
-    const [error, setError] = useState({});
+    const [error, setError] = useState([]);
     const [input, setInput] = useState({
         name: "",
         hp: "",
@@ -25,41 +27,60 @@ export default function PokemonCreate(){
             ...input,
             [e.target.name]: e.target.value,
         });
+
+        setError(
+            validate({
+                ...input,
+                [e.target.name]: e.target.value,
+            })
+        )
     };
 
-    const handleChange = (e) => {
-        setTypes([ ...types, e.target.value ]);
-        console.log(types)
-    }
+    const handleTypesChange = (e) => {
+        if (e.target.checked) {
+            setTypes([...types, e.target.value]);
+        } else {
+            let pos = types.indexOf(e.target.id);
+            types.splice(pos, 1);
+        };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPokemon({ ...input, type: types }));
-        setInput({
-            name: "",
-            hp: "",
-            attack: "",
-            defense: "",
-            speed: "",
-            height: "",
-            weight: "",
-            image: "",
-        });
-        setTypes([])
+        if (!error[0] && types.length) {
+            alert("Pokemon created!");
+            dispatch(createPokemon({ ...input, type: types }));
+            setInput({
+                name: "",
+                hp: "",
+                attack: "",
+                defense: "",
+                speed: "",
+                height: "",
+                weight: "",
+                image: "",
+            });
+            setTypes([]);
+            e.target.reset();
+            }else if(error[0] === undefined){
+                alert('Select a Type');
+            }else{
+                alert(error[0]);
+            }
     };
 
     return (
         <div>
-            <div>
+            <div className={styles.nav}>
                 <h1>Create Pokemon</h1>
                 <Link to='/home'>
-                    <button>Back</button>
+                    <button className={styles.button}>Back</button>
                 </Link>
             </div>
 
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
 
+                <div className={styles.stats}>
                     <div>
                         <label>Name: </label>
                         <input
@@ -147,25 +168,26 @@ export default function PokemonCreate(){
                             onChange={handleInputChange}
                         />
                     </div>
+                </div>
 
                     <div>
                         <h3>Types</h3>
                         {
                             typesData.map((e) => (
                                 <div key={e.id}>
+                                <label>{e.name}</label>
                                     <input
                                     key={e.id}
-                                    type='button'
+                                    type='checkbox'
                                     value={e.name}
                                     id={e.id}
-                                    onClick={(e) => handleChange(e)}
+                                    onChange={(e) => handleTypesChange(e)}
                                     />
                                 </div>
                             ))
                         }
                     </div>
 
-                </div>
                 <button>Create</button>
             </form>
 

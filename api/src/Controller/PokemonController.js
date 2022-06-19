@@ -127,7 +127,6 @@ const getPokemonById = async (req, res, next) => {
 const createPokemon = async (req, res) => {
     try{
         const { name, hp, attack, defense, speed, height, weight, image, type } = req.body;
-        console.log(type)
         const findPokemon = await Pokemon.findOne({ where: { name: name.toLowerCase() }, });
         if(findPokemon){
                 res.send('Pokemon already exists');

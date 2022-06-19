@@ -1,41 +1,48 @@
-.box {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	background-color: rgba(0, 0, 0, 0.89);
-	border-radius: 3px;
-	padding: 70px 100px;
+div.centralize {
+	width: 20vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.inputContainer {
+div.inputBlock {
 	position: relative;
-	margin-bottom: 25px;
 }
-.inputContainer label {
+div.inputBlock input {
+	font-weight: 500;
+	font-size: 1rem;
+	color: #000;
+	width: 250px;
+	height: 10px;
+	padding: 15px 15px;
+	border-radius: 1rem;
+	border: 0.01rem solid  #000;
+	outline:none;
+}
+div.inputBlock span.placeholder {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	font-size: 16px;
-	color: #fff;
+	margin: 12px 0;
+	padding: 0 5px;
+	font-family: Roboto, sans-serif;
+	color:  #000;
+	display: flex;
+	align-items: center;
+	font-size: 1.1rem;
+	top: 0;
+	left: 17px;
+	transition: all 0.2s;
+	transform-origin: 0% 0%;
+	background: none;
 	pointer-events: none;
-	transition: all 0.5s ease-in-out;
 }
-.inputContainer input {
-	border: 0;
-	border-bottom: 1px solid #555;
-	background: transparent;
-	width: 100%;
-	padding: 8px 0 5px 0;
-	font-size: 16px;
-	color: #fff;
+div.inputBlock input:valid + span.placeholder,
+div.inputBlock input:focus + span.placeholder {
+transform: scale(0.8) translateY(-30px);
+background: #fff;
 }
-.inputContainer input:focus {
-	border: none;
-	outline: none;
-	border-bottom: 1px solid #e74c3c;
+div.inputBlock input:focus{
+color: #f0c305;
+border-color: #f0c305;
 }
-.inputContainer input:focus ~ label,
-.inputContainer input:valid ~ label {
-	top: -12px;
-	font-size: 12px;
+div.inputBlock input:focus + span.placeholder {
+color: #f0c305;
 }

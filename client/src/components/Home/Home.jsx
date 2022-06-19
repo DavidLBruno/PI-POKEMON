@@ -71,7 +71,7 @@ export default function Home(){
             <select onChange={filterType} className={styles.button}>
                 <option value="all">All types</option>
                 {allTypes.map((t) => (
-                <option key={t.ame} value={t.name}>{t.name}</option>
+                <option key={t.name} value={t.name}>{t.name}</option>
                 ))}
             </select>
 
@@ -83,8 +83,10 @@ export default function Home(){
 
             <Link to='/pokemon'><button className={styles.button}>Create Pokemon</button></Link>
 
-            </div>
             <SearchBar />
+
+            </div>
+
 
             <Paginated
             pokemonPerPage={pokemonPerPage}
@@ -92,13 +94,14 @@ export default function Home(){
             paginated={paginated}
             />
 
-
+        <div className={styles.cards}>
             {   currentPokemons?.map((e) => {
                 return (
-                    <Card name={e.name} type={e.Type} image={e.image} id={e.id} key={e.id} className={styles.cards}/>
+                    <Card name={e.name} type={e.types} image={e.image} id={e.id} key={e.id} className={styles.cards}/>
                 )
             })
             }
+        </div>
 
         {
             allPokemons.length === 0 && (

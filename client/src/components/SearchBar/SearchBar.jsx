@@ -23,11 +23,18 @@ export default function SearchBar(){
     };
 
     return (
-<div className={styles.box}>
-	<div class={styles.inputContainer}>
-		<input type="text" required=""/>
-		<label>Full Name</label>
-	</div>
-</div>
+        <div className={styles.centralize}>
+            <form onSubmit={(e) => {handleSubmit(e)}}>
+                <div className={styles.inputBlock}>
+                <input
+                type="text"
+                name="input-text"
+                id="input-text"
+                required spellcheck="false"
+                onChange={(e) => {hanldeInputChange(e)}}/>
+                <span className={styles.placeholder}>Search</span>
+            </div>
+            </form>
+        </div>
     )
 };

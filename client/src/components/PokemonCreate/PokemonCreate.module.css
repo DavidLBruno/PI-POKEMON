@@ -1,32 +1,13 @@
-body{
-    background-color: #191a1d;
-}
-.body{
-    display: flex;
-    flex-direction: column;
-}
-
 .nav{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-color: #ffffff;
 }
 
-.cards{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    justify-content: space-between;
-    align-content: space-between;
-    gap: 1rem;
-    margin-left: 5%;
-    margin-bottom: 0px;
-    margin-top: 20px;
-}
-
-.title{
-    cursor: pointer;
+.stats{
+    background-color: #fff;
 }
 
 .button {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { getDetail } from "../../redux/action";
+import image  from "../../assets/loading.gif"
 import styles from "./Detail.module.css"
 
 export default function Detail(){
@@ -18,13 +19,14 @@ export default function Detail(){
     if(pokemonDetail){
     return (
         <div>
-            <div>
-                <h2>{pokemonDetail.name}</h2>
+
+            <div className={styles.nav}>
                 <Link to='/home'>
-                    <button>Back</button>
+                    <button className={styles.button}>Back</button>
                 </Link>
             </div>
 
+                <h2>{pokemonDetail.name}</h2>
             <div>
                 <img src={pokemonDetail.image} alt="Pokemon Image"/>
             </div>
@@ -56,6 +58,6 @@ export default function Detail(){
         </div>
         );
     }else{
-        return '';
+        return <img src={image}/>;
     };
 };
