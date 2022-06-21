@@ -1,19 +1,19 @@
 body{
     background-color: #191a1d;
 }
+.bodyDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .nav{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    width: 100%;
     height: 86px;
     background-color: #ffffff;
-}
-.bodyDetail{
-    background-image: url('../../assets/detail.png');
-    background-size: 50%;
-    height: 50%;
-    width: 50%;
 }
 .button {
     height: 45px;
@@ -41,4 +41,87 @@ body{
 
 .button:active {
     transform: translateY(-1px);
+}
+
+.cardDetail{
+    display: block;
+    height: 580px;
+    width: 900px;
+    background-image: url('../../assets/detail.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 90%;
+    margin-top: -5px;
+}
+.imagePokemon{
+    position: absolute;
+    padding-top: 100px;
+    padding-left: 100px;
+}
+.name{
+    position: absolute;
+    padding-top: 475px;
+    padding-left: 165px;
+    font-size: 15px;
+}
+.height{
+    position: absolute;
+    padding-top: 465px;
+    padding-left: 530px;
+    color: #fff;
+}
+.weight{
+    position: absolute;
+    padding-top: 465px;
+    padding-left: 670px;
+    color: #fff;
+}
+.id{
+    position: absolute;
+    padding-top: 161px;
+    padding-left: 532px;
+    color: #fff;
+}
+.hp{
+    position: absolute;
+    padding-top: 405px;
+    padding-left: 550px;
+    color: #fff;
+}
+.attack{
+    position: absolute;
+    padding-top: 250px;
+    padding-left: 532px;
+    color: #fff;
+}
+.defense{
+    position: absolute;
+    padding-top: 250px;
+    padding-left: 610px;
+    color: #fff;
+}
+.speed{
+    position: absolute;
+    padding-top: 250px;
+    padding-left: 700px;
+    color: #fff;
+}
+.type{
+    position: absolute;
+    padding-top: 210px;
+    padding-left: 532px;
+    color: #fff;
+}
+.types{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-top: 210px;
+    padding-left: 594px;
+    color: #fff;
+}
+
+.loadingPokemons{
+    width: 25%;
+    height: 25%;
 }

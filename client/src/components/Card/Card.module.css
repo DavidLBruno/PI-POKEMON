@@ -1,25 +1,3 @@
-.card {
-    width: 200px;
-    height: 230px;
-    background-image: url('../../assets/cards.png');
-    opacity: 0.9;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    margin-bottom: 0px !important;
-    color: white;
-    font-size: medium;
-}
-
-.card:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    background-image: linear-gradient(to right, #ffffff8a, #000000c4);
-    box-shadow: 1px 1px 15px #ffffff;
-}
-
 .img {
     width: 100%;
     height: 50%;
@@ -27,18 +5,6 @@
     position: relative;
     top: 0px;
 }
-
-.name {
-    margin-right: auto;
-    margin-left: auto;
-    width: auto;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 8px 35px 8px 35px;
-    background-image: linear-gradient(to right, #ffffff, #000000);
-    border-radius: 30px;
-}
-
 .type{
     display: flex;
     flex-direction: row;
@@ -47,7 +13,58 @@
     top: -100px;
 }
 
+.name {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
 .name:hover {
-    background-image: linear-gradient(to right, #d1e4d8, #000000);
-    box-shadow: 1px 1px 15px #ffffff;
+    background-color: #191a1d;
+    box-shadow: 0px 15px 20px #191a1d;
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.name:active {
+    transform: translateY(-1px);
+}
+
+.card {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    height: 250px;
+    width: 160px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.card:hover {
+    background-color: #f0c305;
+    box-shadow: 0px 15px 20px rgb(231, 196, 37);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.card:active {
+    transform: translateY(-1px);
 }

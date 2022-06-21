@@ -97,7 +97,7 @@ export default function Home(){
         <div className={styles.cards}>
             {   currentPokemons?.map((e) => {
                 return (
-                    <Card name={e.name} type={e.types} image={e.image} id={e.id} key={e.id} className={styles.cards}/>
+                    <Card name={e.name} type={e.types.slice(0, 2)} images={e.image} id={e.id} key={e.id} className={styles.cards}/>
                 )
             })
             }
@@ -105,7 +105,7 @@ export default function Home(){
 
         {
             allPokemons.length === 0 && (
-                <img src={image} />
+                <img src={image} className={styles.loadingPokemons}/>
             )
         }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNamePokemon } from "../../redux/action/index";
@@ -30,7 +30,7 @@ export default function SearchBar(){
                 type="text"
                 name="input-text"
                 id="input-text"
-                required spellcheck="false"
+                required spellCheck="false"
                 onChange={(e) => {hanldeInputChange(e)}}/>
                 <span className={styles.placeholder}>Search</span>
             </div>

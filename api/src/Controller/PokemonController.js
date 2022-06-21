@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { Op } = require('sequelize');
 const { Pokemon, Type } = require('../db');
 
 const pokeApi = async (name) => {
@@ -38,6 +37,7 @@ const pokeApi = async (name) => {
                     height: e.data.height,
                     weight: e.data.weight,
                     image: e.data.sprites.versions['generation-v']['black-white'].front_default,
+                    createInDb: 'false',
                     types: e.data.types.map((e) => { return { name: e.type.name } }),
                 };
             });
@@ -103,6 +103,7 @@ const getPokemonById = async (req, res, next) => {
                 height: pokemonApi.data.height,
                 weight: pokemonApi.data.weight,
                 image: pokemonApi.data.sprites.versions['generation-v']['black-white'].front_default,
+                createInDb: 'false',
                 types: pokemonApi.data.types.map((e) => { return { name: e.type.name } }),
             }];
             res.send(pokemonByIdApi);

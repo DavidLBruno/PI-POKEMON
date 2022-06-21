@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { getDetail } from "../../redux/action";
+import { cleanStore, getDetail } from "../../redux/action";
 import image  from "../../assets/loading.gif"
 import styles from "./Detail.module.css"
 
@@ -14,11 +14,12 @@ export default function Detail(){
         dispatch(getDetail(params.id));
     }, [dispatch, params.id]);
 
+
     const pokemonDetail = useSelector((state) => state.pokemonDetail.length && state.pokemonDetail[0]);
 
     if(pokemonDetail){
     return (
-        <div>
+        <div className={styles.bodyDetail}>
 
             <div className={styles.nav}>
                 <Link to='/home'>
@@ -26,38 +27,41 @@ export default function Detail(){
                 </Link>
             </div>
 
-                <h2>{pokemonDetail.name}</h2>
-            <div>
-                <img src={pokemonDetail.image} alt="Pokemon Image"/>
-            </div>
+            <div className={styles.cardDetail}>
 
-            <div>
-                <h3>Stats</h3>
-                <h4>ID: {pokemonDetail.id}</h4>
-                <h4>Healt Points (HP): {pokemonDetail.hp}</h4>
-                <h4>Attack: {pokemonDetail.attack}</h4>
-                <h4>Defense: {pokemonDetail.defense}</h4>
-                <h4>Speed: {pokemonDetail.speed}</h4>
-            </div>
 
-            <div>
-                <h3>Size</h3>
-                <h4>Height: {pokemonDetail.height}</h4>
-                <h4>Weight: {pokemonDetail.weight}</h4>
-            </div>
+                <div className={styles.imagePokemon}>
+                    <img src={pokemonDetail.image} alt="Pokemon Image" style={{width: '20rem', height: '20rem'}}/>
+                </div>
 
-            <div>
-                <h3>Types</h3>
+                <h2 className={styles.name}>{pokemonDetail.name.toUpperCase()}</h2>
+                <h4 className={styles.id}>ID: {pokemonDetail.id}</h4>
+                <h4 className={styles.hp}>HP: {pokemonDetail.hp}</h4>
+                <h4 className={styles.attack}>Attack: {pokemonDetail.attack}</h4>
+                <h4 className={styles.defense}>Defense: {pokemonDetail.defense}</h4>
+                <h4 className={styles.speed}>Speed: {pokemonDetail.speed}</h4>
+                <h4 className={styles.height}>Height: {pokemonDetail.height}</h4>
+                <h4 className={styles.weight}>Weight: {pokemonDetail.weight}</h4>
+
+                <h3 className={styles.type}>Types:</h3>
+                <div className={styles.types}>
                 { pokemonDetail &&
                     pokemonDetail.types.map((e) => (
                     <h4 key={e.name}>
                     {e.name}
                     </h4>
                     ))}
-            </div>
+                </div>
         </div>
+            </div>
         );
     }else{
-        return <img src={image}/>;
+        return (
+            <div>
+                <div className={styles.nav}>
+                </div>
+                <img src={image} className={styles.loadingPokemons}/>;
+            </div>
+        )
     };
 };

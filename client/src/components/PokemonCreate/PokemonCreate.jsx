@@ -70,125 +70,156 @@ export default function PokemonCreate(){
     };
 
     return (
-        <div>
-            <div className={styles.nav}>
-                <h1>Create Pokemon</h1>
-                <Link to='/home'>
-                    <button className={styles.button}>Back</button>
-                </Link>
-            </div>
+        <div className={styles.body}>
+
 
             <form onSubmit={(e) => handleSubmit(e)}>
 
-                <div className={styles.stats}>
-                    <div>
-                        <label>Name: </label>
-                        <input
-                            name="name"
-                            type="text"
-                            value={input.name}
-                            placeholder="Name"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                    <label>Healt Points (HP): </label>
-                        <input
-                            name="hp"
-                            type="number"
-                            value={input.hp}
-                            placeholder="HP"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Attack: </label>
-                        <input
-                            name="attack"
-                            type="number"
-                            value={input.attack}
-                            placeholder="Attack"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Defense: </label>
-                        <input
-                            name="defense"
-                            type="number"
-                            value={input.defense}
-                            placeholder="Defense"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Speed: </label>
-                        <input
-                            name="speed"
-                            type="number"
-                            value={input.speed}
-                            placeholder="Speed"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Height: </label>
-                        <input
-                            name="height"
-                            type="number"
-                            value={input.height}
-                            placeholder="Height"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Weight: </label>
-                        <input
-                            name="weight"
-                            type="number"
-                            value={input.weight}
-                            placeholder="Weight"
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Image Link: </label>
-                        <input
-                            name="image"
-                            type="text"
-                            value={input.image}
-                            placeholder="Image"
-                            onChange={handleInputChange}
-                        />
-                    </div>
+                <div className={styles.nav}>
+                    <h1>Create Pokemon</h1>
+                    <button className={styles.button}>Create</button>
+                    <Link to='/home'>
+                        <button className={styles.button}>Back</button>
+                    </Link>
                 </div>
 
-                    <div>
+                <div className={styles.statsAndTypes}>
+
+                    <div className={styles.stats}>
+                    <h3>Stats</h3>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="text"
+                                name="name"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.name}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Name</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="hp"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.hp}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Healt Points </span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="attack"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.attack}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Attack</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="defense"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.defense}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Defense</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="speed"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.speed}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Speed</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="height"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.height}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Height</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="number"
+                                name="weight"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.weight}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Weight</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.centralize}>
+                        <div className={styles.inputBlock}>
+                            <input
+                                type="text"
+                                name="image"
+                                id="input-text"
+                                required spellcheck="false"
+                                value={input.image}
+                                onChange={handleInputChange}
+                            />
+                            <span className={styles.placeholder}>Image Link: </span>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div className={styles.types}>
                         <h3>Types</h3>
+                        <div className={styles.typesOrder}>
                         {
                             typesData.map((e) => (
-                                <div key={e.id}>
-                                <label>{e.name}</label>
-                                    <input
-                                    key={e.id}
-                                    type='checkbox'
-                                    value={e.name}
-                                    id={e.id}
-                                    onChange={(e) => handleTypesChange(e)}
-                                    />
+                                <div className={styles.container}>
+                                    <ul className= {styles.ksCboxtags}>
+                                        <li>
+                                            <input onChange={(e) => handleTypesChange(e)} type="checkbox" id={`checkbox${e.id}`} value={e.name} />
+                                            <label for={`checkbox${e.id}`} >{e.name}</label>
+                                        </li>
+                                    </ul>
                                 </div>
                             ))
                         }
+                        </div>
                     </div>
-
-                <button>Create</button>
+            </div>
             </form>
 
         </div>
