@@ -1,5 +1,5 @@
 div.centralize {
-	width: 20vw;
+	width: 210px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -11,7 +11,7 @@ div.inputBlock input {
 	font-weight: 500;
 	font-size: 1rem;
 	color: #000;
-	width: 250px;
+	width: 200px;
 	height: 10px;
 	padding: 15px 15px;
 	border-radius: 1rem;

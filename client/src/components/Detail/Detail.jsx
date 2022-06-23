@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { cleanStore, getDetail } from "../../redux/action";
+import { cleanMyStore, cleanStore, getDetail } from "../../redux/action";
 import image  from "../../assets/loading.gif"
 import styles from "./Detail.module.css"
 
@@ -14,6 +14,10 @@ export default function Detail(){
         dispatch(getDetail(params.id));
     }, [dispatch, params.id]);
 
+    const cleanStore = () => {
+        dispatch(cleanMyStore())
+    };
+
 
     const pokemonDetail = useSelector((state) => state.pokemonDetail.length && state.pokemonDetail[0]);
 
@@ -23,7 +27,7 @@ export default function Detail(){
 
             <div className={styles.nav}>
                 <Link to='/home'>
-                    <button className={styles.button}>Back</button>
+                    <button className={styles.button} onClick={cleanStore}>Back</button>
                 </Link>
             </div>
 

@@ -95,6 +95,11 @@ function rootReducer(state = initialState, action){
                     ...state,
                     pokemon: state.pokemon,
                 }
+            case 'CLEAN_STORE':
+                return{
+                    ...state,
+                    pokemonDetail: [],
+                }
 
             default:
             return state;

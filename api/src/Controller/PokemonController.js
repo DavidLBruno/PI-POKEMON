@@ -88,7 +88,7 @@ const getPokemons = async (req, res) => {
     };
 };
 
-const getPokemonById = async (req, res, next) => {
+const getPokemonById = async (req, res) => {
     try{
         const { id } = req.params;
         if(id.length < 5){

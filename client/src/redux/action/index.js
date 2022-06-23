@@ -24,6 +24,9 @@ export function getNamePokemon(name){
     return async function(dispatch){
         try{
             let json = await axios.get('http://localhost:3001/pokemons?name=' + name);
+            if(!json.length){
+                return alert('Pokemon Not Found')
+            };
             return dispatch({
                 type: 'GET_BY_NAME',
                 payload: json.data
@@ -74,3 +77,9 @@ export function createPokemon(payload){
         await axios.post('http://localhost:3001/pokemons', payload);
     };
 };
+
+export function cleanMyStore(){
+    return{
+        type: 'CLEAN_STORE',
+    }
+}

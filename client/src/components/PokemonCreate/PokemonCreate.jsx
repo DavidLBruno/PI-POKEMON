@@ -33,13 +33,13 @@ export default function PokemonCreate(){
                 ...input,
                 [e.target.name]: e.target.value,
             })
-        )
+        );
     };
 
     const handleTypesChange = (e) => {
-        if (e.target.checked) {
+        if(e.target.checked){
             setTypes([...types, e.target.value]);
-        } else {
+        }else{
             let pos = types.indexOf(e.target.id);
             types.splice(pos, 1);
         };
@@ -47,6 +47,9 @@ export default function PokemonCreate(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(types.length > 2){
+            return alert('Choose only two types')
+        }
         if (!error[0] && types.length) {
             alert("Pokemon created!");
             dispatch(createPokemon({ ...input, type: types }));
@@ -210,7 +213,7 @@ export default function PokemonCreate(){
                                 <div className={styles.container}>
                                     <ul className= {styles.ksCboxtags}>
                                         <li>
-                                            <input onChange={(e) => handleTypesChange(e)} type="checkbox" id={`checkbox${e.id}`} value={e.name} />
+                                            <input onChange={handleTypesChange} type="checkbox" id={`checkbox${e.id}`} value={e.name} />
                                             <label for={`checkbox${e.id}`} >{e.name}</label>
                                         </li>
                                     </ul>
