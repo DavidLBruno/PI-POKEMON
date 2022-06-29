@@ -74,7 +74,7 @@ export function filterByState(payload){
 
 export function createPokemon(payload){
     return async function(dispatch){
-        await axios.post('http://localhost:3001/pokemons', payload);
+        await axios.post('/pokemons', payload);
     };
 };
 
