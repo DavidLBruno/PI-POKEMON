@@ -74,7 +74,7 @@ export function filterByState(payload){
 
 export function createPokemon(payload){
     return async function(dispatch){
-        await axios.post('/pokemons', payload);
+        await axios.post('https://pokemon-pi-henry.herokuapp.com/pokemons', payload);
     };
 };
 
