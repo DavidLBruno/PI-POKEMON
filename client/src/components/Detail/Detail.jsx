@@ -52,7 +52,7 @@ export default function Detail(){
                 { pokemonDetail &&
                     pokemonDetail.types.map((e) => (
                     <h4 key={e.name}>
-                    {e.name}
+                    {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h4>
                     ))}
                 </div>
