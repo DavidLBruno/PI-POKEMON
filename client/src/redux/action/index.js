@@ -16,17 +16,14 @@ export function getTypes(){
         return dispatch({
             type: 'GET_TYPES',
             payload: json.data
-        })
-    }
+        });
+    };
 };
 
 export function getNamePokemon(name){
     return async function(dispatch){
         try{
             let json = await axios.get('https://pokemon-pi-henry.herokuapp.com/pokemons?name=' + name);
-            if(!json.length){
-                return alert('Pokemon Not Found')
-            };
             return dispatch({
                 type: 'GET_BY_NAME',
                 payload: json.data

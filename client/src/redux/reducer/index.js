@@ -14,6 +14,7 @@ function rootReducer(state = initialState, action){
                 pokemonFiltered: action.payload,
             }
         case 'GET_BY_NAME':
+            if(!action.payload.length){return alert('Pokemon not Found')}
             return {
                 ...state,
                 pokemon: action.payload,
