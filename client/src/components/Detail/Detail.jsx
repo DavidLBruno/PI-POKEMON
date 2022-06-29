@@ -35,7 +35,7 @@ export default function Detail(){
 
 
                 <div className={styles.imagePokemon}>
-                    <img src={pokemonDetail.image} alt="Pokemon Image" style={{width: '20rem', height: '20rem'}}/>
+                    <img src={pokemonDetail.image} alt="Pokemon Image" style={{borderRadius: '10px',width: '250px', height: '250px'}}/>
                 </div>
 
                 <h2 className={styles.name}>{pokemonDetail.name.toUpperCase()}</h2>
@@ -64,7 +64,7 @@ export default function Detail(){
             <div>
                 <div className={styles.nav}>
                 </div>
-                <img src={image} className={styles.loadingPokemons}/>;
+                <img src={image} className={styles.loadingPokemons} styles={{width:"100px"}}/>;
             </div>
         )
     };

@@ -55,8 +55,8 @@ body{
 }
 .imagePokemon{
     position: absolute;
-    padding-top: 100px;
-    padding-left: 100px;
+    padding-top: 140px;
+    padding-left: 150px;
 }
 .name{
     position: absolute;
@@ -78,6 +78,7 @@ body{
 }
 .id{
     position: absolute;
+    width: 230px;
     padding-top: 161px;
     padding-left: 532px;
     color: #fff;
