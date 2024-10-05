@@ -1,8 +1,9 @@
 import axios from "axios";
+const { REACT_APP_API_URL } = process.env;
 
-export function getPokemons() {
+function getPokemons() {
   return async function (dispatch) {
-    let json = await axios.get("https://pokemon-p3g6.onrender.com/pokemons");
+    let json = await axios.get(REACT_APP_API_URL + "pokemons");
     return dispatch({
       type: "GET_POKEMONS",
       payload: json.data,
@@ -10,9 +11,9 @@ export function getPokemons() {
   };
 }
 
-export function getTypes() {
+function getTypes() {
   return async function (dispatch) {
-    let json = await axios.get("https://pokemon-p3g6.onrender.com/types");
+    let json = await axios.get(REACT_APP_API_URL + "types");
     return dispatch({
       type: "GET_TYPES",
       payload: json.data,
@@ -20,12 +21,10 @@ export function getTypes() {
   };
 }
 
-export function getNamePokemon(name) {
+function getNamePokemon(name) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(
-        "https://pokemon-p3g6.onrender.com/pokemons?name=" + name
-      );
+      let json = await axios.get(REACT_APP_API_URL + "pokemons?name=" + name);
       return dispatch({
         type: "GET_BY_NAME",
         payload: json.data,
@@ -36,12 +35,10 @@ export function getNamePokemon(name) {
   };
 }
 
-export function getDetail(id) {
+function getDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(
-        "https://pokemon-p3g6.onrender.com/pokemons/" + id
-      );
+      let json = await axios.get(REACT_APP_API_URL + "pokemons/" + id);
       return dispatch({
         type: "GET_DETAIL",
         payload: json.data,
@@ -52,35 +49,47 @@ export function getDetail(id) {
   };
 }
 
-export function orderByName(payload) {
+function orderByName(payload) {
   return {
     type: "ORDER_POKEMONS",
     payload,
   };
 }
 
-export function filterByType(payload) {
+function filterByType(payload) {
   return {
     type: "FILTER_BY_TYPE",
     payload,
   };
 }
 
-export function filterByState(payload) {
+function filterByState(payload) {
   return {
     type: "FILTER_BY_STATE",
     payload,
   };
 }
 
-export function createPokemon(payload) {
+function createPokemon(payload) {
   return async function (dispatch) {
-    await axios.post("https://pokemon-p3g6.onrender.com/pokemons", payload);
+    await axios.post(REACT_APP_API_URL + "pokemons", payload);
   };
 }
 
-export function cleanMyStore() {
+function cleanMyStore() {
   return {
     type: "CLEAN_STORE",
   };
 }
+
+export {
+  getPokemons,
+  getTypes,
+  getNamePokemon,
+  getDetail,
+  orderByName,
+  filterByType,
+  filterByState,
+  createPokemon,
+  cleanMyStore,
+};
