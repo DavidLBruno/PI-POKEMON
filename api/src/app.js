@@ -3,6 +3,16 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
+const { createProxyMiddleware } = require("http-proxy-middleware");
+const { ENVIRONMENT } = process.env;
+
+const proxyMiddleware = createProxyMiddleware({
+  target:
+    ENVIRONMENT == "development"
+      ? "http://localhost:3001"
+      : "http://vps-4441022-x.dattaweb.com:3001",
+  changeOrigin: true,
+});
 
 require("./db.js");
 
@@ -26,6 +36,8 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+
+server.use("/api", proxyMiddleware);
 
 server.use("/", routes);
 
