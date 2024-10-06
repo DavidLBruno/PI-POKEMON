@@ -10,17 +10,6 @@ const server = express();
 const cors = require("cors");
 
 server.name = "API";
-
-server.use(
-  "/",
-  createProxyMiddleware({
-    target: "http://vps-4441022-x.dattaweb.com:3001",
-    changeOrigin: true,
-    pathRewrite: {},
-    secure: false, // desactiva la verificación SSL
-  })
-);
-
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
