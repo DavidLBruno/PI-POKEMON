@@ -17,12 +17,16 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const https = require("https");
+const fs = require("fs");
 
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(process.env.PORT, () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-console
-  });
+const options = {
+  key: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/fullchain.pem"),
+};
+
+https.createServer(options, server).listen(3000, () => {
+  console.log("HTTPS server is running on https://yourdomain.com:3000");
 });

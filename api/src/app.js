@@ -4,15 +4,6 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const { ENVIRONMENT } = process.env;
-
-const proxyMiddleware = createProxyMiddleware({
-  target:
-    ENVIRONMENT == "development"
-      ? "http://localhost:3001"
-      : "http://vps-4441022-x.dattaweb.com:3001",
-  changeOrigin: true,
-});
 
 require("./db.js");
 
@@ -20,6 +11,16 @@ const server = express();
 const cors = require("cors");
 
 server.name = "API";
+
+server.use(
+  "/",
+  createProxyMiddleware({
+    target: "http://vps-4441022-x.dattaweb.com:3001",
+    changeOrigin: true,
+    pathRewrite: {},
+    secure: false, // desactiva la verificación SSL
+  })
+);
 
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
@@ -36,8 +37,6 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-
-server.use("/api", proxyMiddleware);
 
 server.use("/", routes);
 
