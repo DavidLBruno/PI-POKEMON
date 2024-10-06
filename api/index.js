@@ -17,12 +17,17 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const http = require("http");
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 
+const hostname = "localhost";
+const port = 3000;
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(process.env.PORT, () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-console
+  const httpServer = http.createServer(server);
+  httpServer.listen(port, hostname, () => {
+    console.log(`Servidor corriendo en http://${hostname}:${port}/`);
   });
 });
