@@ -13,13 +13,11 @@ const cors = require("cors");
 server.name = "API";
 
 server.use(
-  "/api",
+  "/",
   createProxyMiddleware({
     target: "http://vps-4441022-x.dattaweb.com:3001",
     changeOrigin: true,
-    pathRewrite: {
-      "^/api": "", // quita el prefijo /api si es necesario
-    },
+    pathRewrite: {},
     secure: false, // desactiva la verificación SSL
   })
 );
