@@ -22,12 +22,12 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 
 const hostname = "localhost";
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   const httpServer = http.createServer(server);
   httpServer.listen(port, hostname, () => {
-    console.log(`Servidor corriendo en http://${hostname}:${port}/`);
+    console.log(`Servidor corriendo en el puerto ${port}`);
   });
 });

@@ -88,11 +88,8 @@ const pokeDb = async (name) => {
 const getPokemons = async (req, res) => {
   try {
     const { name } = req.query;
-    let allPokemons = await pokeDb(name);
-
-    if (allPokemons.length == 0) {
-      allPokemons = await pokeApi(name);
-    }
+    let allPokemons = await pokeApi(name);
+    allPokemons + (await pokeDb(name));
 
     res.send(allPokemons);
   } catch (error) {
